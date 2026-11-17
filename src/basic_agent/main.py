@@ -6,10 +6,10 @@ from langchain.agents import create_agent          # NEW, non-deprecated import
 from .tools import add, get_weather
 
 # Load .env explicitly — walks up to ~/agents-course/.env
-load_dotenv(Path(__file__).resolve().parents[3] / ".env")
+load_dotenv(Path(__file__).resolve().parents[2] / ".env")
 
 llm = ChatOpenAI(
-    model=os.getenv("MODEL", "llama-3.1-8b-instant"),
+    model=os.getenv("MODEL", "qwen/qwen3.8-27b"),
     temperature=0,
     base_url=os.getenv("OPENAI_BASE_URL"),
     api_key=os.getenv("OPENAI_API_KEY"),
@@ -21,7 +21,7 @@ agent = create_agent(llm, [add, get_weather])
 
 if __name__ == "__main__":
     result = agent.invoke(
-        {"messages": [("user", "What's 12+30 and the weather in Paris?")]},
+        {"messages": [("Use the add tool for 731137371 + 371137317, and tell me the weather in Paris.")]},
         config={"recursion_limit": 10},
     )
     for msg in result["messages"]:
