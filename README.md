@@ -44,7 +44,9 @@ The `sampling_analyzer` tool analyzes how temperature scaling changes a probabil
 
 Temperature scaling is defined as:
 
-\(q_i = \frac{p_i^{1/T}}{\sum_j p_j^{1/T}}\)
+$$
+q_i = \frac{p_i^{1/T}}{\sum_j p_j^{1/T}}
+$$
 
 **Example:**
 
